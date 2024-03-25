@@ -1,11 +1,12 @@
 import "../libraries/spl_token.sol";
 import "../libraries/mpl_metadata.sol";
 
-@program_id("SPEvBpsQ5Gm2HnSkJyKL8GAKTUkHaumwAgSFYcv7mAB")
+@program_id("CppZde9m1n9foe6TGUtN8upEmCFYmLG4tbH7a7Rq7n78")
 
 contract spl_token_minter {
     @payer(payer)
     constructor() {}
+
 
     @mutableSigner(payer) // payer account
     @mutableSigner(mint) // mint account to be created
@@ -46,6 +47,7 @@ contract spl_token_minter {
         );
     }
 
+
     @mutableAccount(mint)
     @mutableAccount(tokenAccount)
     @mutableSigner(mintAuthority)
@@ -58,4 +60,20 @@ contract spl_token_minter {
             amount // amount
         );
     }
+
+    // Transfer tokens from one token account to another via Cross Program Invocation to Token Program
+    @mutableAccount(from) // token account to transfer from
+    @mutableAccount(to) // token account to transfer to
+    @signer(owner)
+    function transferTokens(
+        uint64 amount // amount to transfer
+    ) external {
+        SplToken.transfer(
+            tx.accounts.from.key, 
+            tx.accounts.to.key, 
+            tx.accounts.owner.key, 
+            amount
+        );
+    }
+   
 }
