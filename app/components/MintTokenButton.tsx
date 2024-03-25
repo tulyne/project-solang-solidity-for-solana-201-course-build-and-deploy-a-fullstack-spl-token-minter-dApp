@@ -1,3 +1,4 @@
+import styles from "../styles/Home.module.css";
 import { useState } from 'react';
 import { Button, Input, VStack, Text, Box } from '@chakra-ui/react';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
