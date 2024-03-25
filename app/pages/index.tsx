@@ -1,3 +1,4 @@
+import styles from "../styles/Home.module.css";
 import { Box, Flex, Spacer, VStack } from "@chakra-ui/react";
 import WalletMultiButton from "@/components/WalletMultiButton";
 import MintTokenButton from "@/components/MintTokenButton";

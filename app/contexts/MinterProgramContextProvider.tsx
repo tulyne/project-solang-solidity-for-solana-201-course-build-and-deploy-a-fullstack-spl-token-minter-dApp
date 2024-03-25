@@ -1,3 +1,4 @@
+import styles from "../styles/Home.module.css";
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import { AnchorProvider, Program, setProvider } from "@coral-xyz/anchor";
 import { SplTokenMinter, IDL as MinterIDL } from "../idl/spl_token_minter";
